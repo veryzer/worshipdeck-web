@@ -2169,7 +2169,12 @@ th[data-hve-editing] {
 
         if (supportText && coffeeImage) {
           supportText.classList.add('coffee-support');
-          supportText.append(coffeeImage);
+          const coffeeLink = document.createElement('a');
+          coffeeLink.href = 'https://www.ko-fi.com/tlvpcom';
+          coffeeLink.target = '_blank';
+          coffeeLink.rel = 'noopener noreferrer';
+          coffeeLink.append(coffeeImage);
+          supportText.append(coffeeLink);
         }
 
         if (featureImage && screenshots) {
