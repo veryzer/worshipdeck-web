@@ -225,6 +225,28 @@
             scroll-margin-top: 6rem;
         }
 
+        .screenshots-gallery {
+          width: min(1200px, 100%);
+          margin: 2rem auto 0;
+          padding: 0 2rem 3rem;
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+          gap: 1rem;
+          flex-wrap: wrap;
+        }
+
+        .screenshots-gallery img {
+          position: static !important;
+          inset: auto !important;
+          transform: none !important;
+          width: min(100%, 280px) !important;
+          height: auto !important;
+          max-height: 400px;
+          object-fit: contain;
+          border-radius: 8px;
+        }
+
         .screenshots-section h2 {
             margin-bottom: 1rem;
         }
@@ -2151,6 +2173,17 @@ th[data-hve-editing] {
         if (featureImage && screenshots) {
           featureImage.classList.add('coffee-feature-image');
           screenshots.append(featureImage);
+        }
+
+        const screenshotImages = document.querySelectorAll('img[alt$=".jpg"]');
+        if (screenshotImages.length) {
+          const gallery = document.createElement('div');
+          gallery.className = 'screenshots-gallery';
+          screenshotImages.forEach((image) => {
+            image.removeAttribute('style');
+            gallery.append(image);
+          });
+          footer?.after(gallery);
         }
       });
     </script>
