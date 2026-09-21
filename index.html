@@ -219,15 +219,15 @@
 
         .screenshots-section {
             max-width: 900px;
-            margin: 0 auto;
-            padding: 0 2rem 3rem;
+          margin: 0 auto;
+          padding: 44px 2rem 0;
             text-align: center;
             scroll-margin-top: 6rem;
         }
 
         .screenshots-gallery {
           width: min(1200px, 100%);
-          margin: 2rem auto 0;
+          margin: 1rem auto 0;
           padding: 0 2rem 3rem;
           display: flex;
           align-items: flex-end;
@@ -248,6 +248,8 @@
         }
 
         .screenshots-section h2 {
+          width: 100%;
+          text-align: center;
             margin-bottom: 1rem;
         }
 
@@ -2179,11 +2181,17 @@ th[data-hve-editing] {
         if (screenshotImages.length) {
           const gallery = document.createElement('div');
           gallery.className = 'screenshots-gallery';
+          screenshots?.removeAttribute('style');
+          if (screenshots) {
+            screenshots.style.width = '100%';
+            screenshots.querySelector('h2')?.removeAttribute('style');
+          }
+          supportText?.after(screenshots);
           screenshotImages.forEach((image) => {
             image.removeAttribute('style');
             gallery.append(image);
           });
-          footer?.after(gallery);
+          screenshots?.after(gallery);
         }
       });
     </script>
